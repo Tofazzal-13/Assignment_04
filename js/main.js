@@ -181,6 +181,7 @@ mainContainer.addEventListener("click", function (event) {
 
 function renderInterview() {
     filteredSection.innerHTML = " ";
+    
   
     for (let interview of interviewTotal) {
         console.log(interview);
