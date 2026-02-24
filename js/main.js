@@ -7,9 +7,14 @@ let total = document.getElementById("total");
 let interview = document.getElementById("interview");
 let rejected = document.getElementById("rejected");
 let availableJobs = document.getElementById("Available_jobs")
+
+
 const filteredSection = document.getElementById("filteredSection")
 
+
 const allCards = document.getElementById("allCards");
+
+
 
 // total count function
 function totalCount() {
@@ -23,6 +28,15 @@ function totalCount() {
     const rejectedCount = rejectedTotal.length;
     rejected.innerText = rejectedCount;
 }
+
+// delete card 
+allCards.addEventListener("click", function(e) {
+  if (e.target.classList.contains("delete_btn")) {
+    const card = e.target.closest(".job_card");
+    card.remove();
+    totalCount();
+  }
+})
 
 totalCount()
 
@@ -72,7 +86,7 @@ function toggleStyle(id) {
 const mainContainer = document.querySelector("main");
 
 mainContainer.addEventListener("click", function (event) {
-
+   
     if (event.target.classList.contains("interview_btn")) {
         const parentNode = event.target.parentNode.parentNode;
 
@@ -166,7 +180,8 @@ mainContainer.addEventListener("click", function (event) {
 // const filterSection = document.getElementById("filteredSection")
 
 function renderInterview() {
-    filteredSection.innerHTML = '';
+    filteredSection.innerHTML = " ";
+  
     for (let interview of interviewTotal) {
         console.log(interview);
 
@@ -197,10 +212,12 @@ function renderInterview() {
         filteredSection.appendChild(div)
     }
 }
-function renderRejected() {
-    filteredSection.innerHTML = '';
+function renderRejected(data) {
+    
+    filteredSection.innerHTML = ""
+ 
     for (let rejected of rejectedTotal) {
-        console.log(rejected);
+        
         
         let div = document.createElement("div")
         div.classList = "bg-white p-5 space-y-6"

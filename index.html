@@ -56,7 +56,7 @@
                 <h2 class="text-xl font-bold text-[#002C5C] ">Available Jobs</h2>
             </div>
             <div class="pr-4">
-                <p class="text-xl font-medium text-[#64748B]"><span id="Available_jobs">0</span> of 8 jobs</p>
+                <p class="text-xl font-medium text-[#64748B]"><span id="Available_jobs">0</span> jobs</p>
             </div>
         </div>
         <div>
@@ -68,35 +68,23 @@
                 class="btn bg-gray-200 btn-lg px-10 rounded-xl text-[#64748B]" id="rejected_card_show">Rejected</div>
         </div>
         <!-- filter section -->
-        <section id="filteredSection" class="hidden space-y-5 pb-4">
-            <div class="bg-white no-card py-8">
-                <div class="flex flex-col items-center">
-                    <img src="./images/jobs.png" alt="">
-                    <h2 class="text-xl font-bold">No Jobs Available</h2>
-                    <p class="text-sm text-[#64748B]">Check back soon for new job opportunities</p>
-                </div>
-            </div>
+        <section id="filteredSection" class="space-y-5 pb-4">
+            
         </section>
         <!-- all cards section -->
         <section>
-            <!-- no card -->
-            <div class="bg-white no-card py-8 hidden">
-                <div class="flex flex-col items-center">
-                    <img src="./images/jobs.png" alt="">
-                    <h2 class="text-xl font-bold">No Jobs Available</h2>
-                    <p class="text-sm text-[#64748B]">Check back soon for new job opportunities</p>
-                </div>
-            </div>
+
             <!-- all cards -->
             <div id="allCards" class="space-y-5">
+
                 <!-- card 1 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">Mobile First Corp</h3>
                             <p class="text-[#64748B] job_circular">React Native Developer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8 ">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -113,13 +101,13 @@
                     </div>
                 </div>
                 <!-- card 2 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">WebFlow Agency</h3>
                             <p class="text-[#64748B] job_circular">Web Designer & Developer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -136,13 +124,13 @@
                     </div>
                 </div>
                 <!-- card 3 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">DataViz Solutions</h3>
                             <p class="text-[#64748B] job_circular">Data Visualization Specialist</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -158,13 +146,13 @@
                     </div>
                 </div>
                 <!-- card 4 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">CloudFirst Inc</h3>
                             <p class="text-[#64748B] job_circular">Backend Developer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -180,13 +168,13 @@
                     </div>
                 </div>
                 <!-- card 5 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">Innovation Labs</h3>
                             <p class="text-[#64748B] job_circular">UI/UX Engineer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -202,13 +190,13 @@
                     </div>
                 </div>
                 <!-- card 6 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">MegaCorp Solutions</h3>
                             <p class="text-[#64748B] job_circular">JavaScript Developer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -225,13 +213,13 @@
                     </div>
                 </div>
                 <!-- card 7 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">StartupXYZ</h3>
                             <p class="text-[#64748B] job_circular">Full Stack Engineer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -247,13 +235,13 @@
                     </div>
                 </div>
                 <!-- card 8 -->
-                <div class="bg-white p-5 space-y-6">
+                <div class="bg-white p-5 space-y-6 job_card">
                     <div class="flex justify-between">
                         <div class="space-y-2">
                             <h3 class="text-[#002C5C] text-xl font-bold job_title">TechCorp Industries</h3>
                             <p class="text-[#64748B] job_circular">Senior Frontend Developer</p>
                         </div>
-                        <div class="btn rounded-full w-8 h-8">
+                        <div class="btn rounded-full w-8 h-8 delete_btn">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -277,6 +265,7 @@
 
     <!-- js added -->
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
