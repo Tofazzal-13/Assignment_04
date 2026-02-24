@@ -1,41 +1,62 @@
 let interviewTotal = [];
 let rejectedTotal = [];
-let currentStatus = "all"
+let currentStatus = "all";
+
+
 
 // get apllication tracker by id
 let total = document.getElementById("total");
 let interview = document.getElementById("interview");
 let rejected = document.getElementById("rejected");
-let availableJobs = document.getElementById("Available_jobs")
+let availableJobs = document.getElementById("available_jobs")
 
 
 const filteredSection = document.getElementById("filteredSection")
 
-
+const noDataDiv = document.getElementById("no-data");
+const noDataDiv2 = document.getElementById("no-data2");
 const allCards = document.getElementById("allCards");
 
+// check empty
 
+function checkEmpty() {
+    console.log(allCards.children.length);
+    console.log(noDataDiv);
+    
+    if (filteredSection.children.length === 0 ) {
+        noDataDiv.classList.remove("hidden");
+    } else {
+        noDataDiv.classList.add("hidden");
+    }
+    
+}
+
+ 
 
 // total count function
 function totalCount() {
     const allCardsCount = allCards.children.length;
     total.innerText = allCardsCount;
-    availableJobs.innerText = allCardsCount
+    availableJobs.innerText = allCardsCount;
+    
 
     const interviewCount = interviewTotal.length;
     interview.innerText = interviewCount;
+    
+
 
     const rejectedCount = rejectedTotal.length;
     rejected.innerText = rejectedCount;
+    
 }
 
 // delete card 
-allCards.addEventListener("click", function(e) {
-  if (e.target.classList.contains("delete_btn")) {
-    const card = e.target.closest(".job_card");
-    card.remove();
-    totalCount();
-  }
+allCards.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete_btn")) {
+        const card = e.target.closest(".job_card");
+        card.remove();
+        totalCount();
+    }
 })
 
 totalCount()
@@ -70,6 +91,11 @@ function toggleStyle(id) {
         renderInterview()
     }
     else if (id === "all_card_show") {
+        if (allCards.children.length === 0) {
+       noDataDiv.classList.remove("hidden");
+    } else {
+        noDataDiv.classList.add("hidden");
+    }
         allCards.classList.remove("hidden");
         filteredSection.classList.add("hidden")
     }
@@ -86,7 +112,7 @@ function toggleStyle(id) {
 const mainContainer = document.querySelector("main");
 
 mainContainer.addEventListener("click", function (event) {
-   
+
     if (event.target.classList.contains("interview_btn")) {
         const parentNode = event.target.parentNode.parentNode;
 
@@ -119,11 +145,11 @@ mainContainer.addEventListener("click", function (event) {
 
         rejectedTotal = rejectedTotal.filter(item => item.jobTitle !== cardInfo.jobTitle)
 
-        if(currentStatus == "interview_card_show" ){
+        if (currentStatus == "interview_card_show") {
             renderInterview()
         }
-        else if(currentStatus == "rejected_card_show" ){
-             renderRejected()
+        else if (currentStatus == "rejected_card_show") {
+            renderRejected()
         }
 
         totalCount()
@@ -157,20 +183,20 @@ mainContainer.addEventListener("click", function (event) {
         if (!jobTitleExit) {
             rejectedTotal.push(cardInfo)
         }
-        
+
         interviewTotal = interviewTotal.filter(item => item.jobTitle !== cardInfo.jobTitle)
-        console.log(currentStatus);
-        
-        if(currentStatus == "interview_card_show" ){
+
+
+        if (currentStatus == "interview_card_show") {
             renderInterview()
         }
-        else if(currentStatus == "rejected_card_show" ){
-             renderRejected()
+        else if (currentStatus == "rejected_card_show") {
+            renderRejected()
         }
 
 
         totalCount()
-       
+
     }
 
 
@@ -180,11 +206,11 @@ mainContainer.addEventListener("click", function (event) {
 // const filterSection = document.getElementById("filteredSection")
 
 function renderInterview() {
-    filteredSection.innerHTML = " ";
-    
   
+    
+    filteredSection.innerHTML = ` `;
+
     for (let interview of interviewTotal) {
-        console.log(interview);
 
         let div = document.createElement("div")
         div.classList = "bg-white p-5 space-y-6"
@@ -211,15 +237,17 @@ function renderInterview() {
         
         `
         filteredSection.appendChild(div)
+        
     }
+    checkEmpty();
 }
-function renderRejected(data) {
-    
+function renderRejected() {
+
     filteredSection.innerHTML = ""
- 
+
     for (let rejected of rejectedTotal) {
-        
-        
+
+
         let div = document.createElement("div")
         div.classList = "bg-white p-5 space-y-6"
         div.innerHTML = `
@@ -246,4 +274,5 @@ function renderRejected(data) {
         `
         filteredSection.appendChild(div)
     }
+    checkEmpty();
 }
