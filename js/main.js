@@ -8,7 +8,8 @@ let currentStatus = "all";
 let total = document.getElementById("total");
 let interview = document.getElementById("interview");
 let rejected = document.getElementById("rejected");
-let availableJobs = document.getElementById("available_jobs")
+let availableJobs = document.getElementById("available_jobs");
+let jobs = document.getElementById("jobs")
 
 
 const filteredSection = document.getElementById("filteredSection")
@@ -22,36 +23,45 @@ const allCards = document.getElementById("allCards");
 function checkEmpty() {
     console.log(allCards.children.length);
     console.log(noDataDiv);
-    
-    if (filteredSection.children.length === 0 ) {
+
+    if (filteredSection.children.length === 0) {
         noDataDiv.classList.remove("hidden");
     } else {
         noDataDiv.classList.add("hidden");
     }
-    
+
 }
 
- 
+
 
 // total count function
 function totalCount() {
     const allCardsCount = allCards.children.length;
     total.innerText = allCardsCount;
     availableJobs.innerText = allCardsCount;
-    
+    jobs.innerText = allCardsCount;
+
 
     const interviewCount = interviewTotal.length;
     interview.innerText = interviewCount;
-    
+
+
 
 
     const rejectedCount = rejectedTotal.length;
     rejected.innerText = rejectedCount;
-    
+
 }
 
 // delete card 
 allCards.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete_btn")) {
+        const card = e.target.closest(".job_card");
+        card.remove();
+        totalCount();
+    }
+})
+filteredSection.addEventListener("click", function (e) {
     if (e.target.classList.contains("delete_btn")) {
         const card = e.target.closest(".job_card");
         card.remove();
@@ -92,10 +102,10 @@ function toggleStyle(id) {
     }
     else if (id === "all_card_show") {
         if (allCards.children.length === 0) {
-       noDataDiv.classList.remove("hidden");
-    } else {
-        noDataDiv.classList.add("hidden");
-    }
+            noDataDiv.classList.remove("hidden");
+        } else {
+            noDataDiv.classList.add("hidden");
+        }
         allCards.classList.remove("hidden");
         filteredSection.classList.add("hidden")
     }
@@ -206,22 +216,22 @@ mainContainer.addEventListener("click", function (event) {
 // const filterSection = document.getElementById("filteredSection")
 
 function renderInterview() {
-  
-    
+
+
     filteredSection.innerHTML = ` `;
 
     for (let interview of interviewTotal) {
 
         let div = document.createElement("div")
-        div.classList = "bg-white p-5 space-y-6"
+        div.classList = "bg-white p-5 space-y-6 job_card"
         div.innerHTML = `
             <div class="flex justify-between">
                 <div class="space-y-2">
                     <h3 class="text-[#002C5C] text-xl font-bold job_title">${interview.jobTitle}</h3>
                     <p class="text-[#64748B] job_circular">${interview.jobCircular}</p>
                 </div>
-                <div class="btn rounded-full w-8 h-8 ">
-                    <i class="fa-solid fa-trash-can"></i>
+                <div class="btn rounded-full w-8 h-8 delete_btn">
+                    <i class="fa-solid fa-trash-can delete_btn"></i>
                 </div>
             </div>
             <p class="text-[#64748B] text-sm job_information">${interview.jobInformation}</p>
@@ -237,7 +247,7 @@ function renderInterview() {
         
         `
         filteredSection.appendChild(div)
-        
+
     }
     checkEmpty();
 }
@@ -249,15 +259,15 @@ function renderRejected() {
 
 
         let div = document.createElement("div")
-        div.classList = "bg-white p-5 space-y-6"
+        div.classList = "bg-white p-5 space-y-6 job_card"
         div.innerHTML = `
             <div class="flex justify-between">
                 <div class="space-y-2">
                     <h3 class="text-[#002C5C] text-xl font-bold job_title">${rejected.jobTitle}</h3>
                     <p class="text-[#64748B] job_circular">${rejected.jobCircular}</p>
                 </div>
-                <div class="btn rounded-full w-8 h-8 ">
-                    <i class="fa-solid fa-trash-can"></i>
+                <div class="btn rounded-full w-8 h-8 delete_btn">
+                    <i class="fa-solid fa-trash-can delete_btn"></i>
                 </div>
             </div>
             <p class="text-[#64748B] text-sm job_information">${rejected.jobInformation}</p>
