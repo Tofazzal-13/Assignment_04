@@ -8,8 +8,8 @@ let currentStatus = "all";
 let total = document.getElementById("total");
 let interview = document.getElementById("interview");
 let rejected = document.getElementById("rejected");
-let availableJobs = document.getElementById("available_jobs");
-let jobs = document.getElementById("jobs")
+let availableJobs = document.getElementById("available_jobs");  
+
 
 
 const filteredSection = document.getElementById("filteredSection")
@@ -21,9 +21,6 @@ const allCards = document.getElementById("allCards");
 // check empty
 
 function checkEmpty() {
-    console.log(allCards.children.length);
-    console.log(noDataDiv);
-
     if (filteredSection.children.length === 0) {
         noDataDiv.classList.remove("hidden");
     } else {
@@ -44,13 +41,17 @@ function totalCount() {
 
     const interviewCount = interviewTotal.length;
     interview.innerText = interviewCount;
-
-
-
+    
 
     const rejectedCount = rejectedTotal.length;
     rejected.innerText = rejectedCount;
+   
 
+}
+
+function interviewCount(){
+    const interviewCount = interviewTotal.length;
+    interview.innerText = interviewCount;
 }
 
 // delete card 
@@ -65,11 +66,12 @@ filteredSection.addEventListener("click", function (e) {
     if (e.target.classList.contains("delete_btn")) {
         const card = e.target.closest(".job_card");
         card.remove();
-        totalCount();
+        interviewCount();
     }
 })
 
 totalCount()
+interviewCount()
 
 
 
